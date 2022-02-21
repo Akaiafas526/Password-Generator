@@ -15,88 +15,6 @@ let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 let finalChosenCharacter = [];
 // let array = new Array
 
-let passwordLength = prompt('Choose a length for your password between 8 & 128 characters.');
-
-while (passwordLength > 128 || passwordLength < 8) {
-  alert('Password should be greater than 8 characters and less than 128.')
-  passwordLength = prompt('Choose a length for your password between 8 & 128 characters.');
-}
-
-let specialBoolean = confirm('Do you want special characters?');
-let numberBoolean = confirm('Do you want numbers?');
-let uppercaseBoolean = confirm('Do you want uppercase?');
-let lowercaseBoolean = confirm('Do you want lowercase?');
-
-if (specialBoolean) {
-  finalChosenCharacter = finalChosenCharacter.concat(special);
-}
-
-if (numberBoolean) {
-  finalChosenCharacter = finalChosenCharacter.concat(number);
-}
-
-if (uppercaseBoolean) {
-  finalChosenCharacter = finalChosenCharacter.concat(upperCase);
-}
-
-if (lowercaseBoolean) {
-  finalChosenCharacter = finalChosenCharacter.concat(lowerCase)
-}
-
-finalChosenCharacter;
-
-console.log(finalChosenCharacter);
-
-let newPassword = '';
-
-for (let i = 0; i < passwordLength; i++) {
-  let randomIndex = Math.floor(Math.random() * finalChosenCharacter.length);
-  let randomCharacters = finalChosenCharacter[randomIndex];
-  newPassword = newPassword.concat(randomCharacters);
-
-  
-}
-
-
-
-function generatePassword() {
-  let passwordStr = '';
-  console.log(passwordStr)
-
-  // if (specialBoolean) {
-  //   finalChosenCharacter = finalChosenCharacter.concat(special);
-  // }
-
-  // if (numberBoolean) {
-  //   finalChosenCharacter = finalChosenCharacter.concat(number);
-  // }
-
-  // if (uppercaseBoolean) {
-  //   finalChosenCharacter = finalChosenCharacter.concat(upperCase);
-  // }
-
-  // if (lowercaseBoolean) {
-  //   finalChosenCharacter = finalChosenCharacter.concat(lowerCase)
-  // }
-
-  // finalChosenCharacter;
-
-  // console.log(finalChosenCharacter);
-
-  // let newPassword = '';
-
-  // for (let i = 0; i < passwordLength; i++) {
-  //   let randomIndex = Math.floor(Math.random() * finalChosenCharacter.length);
-  //   let randomCharacters = finalChosenCharacter[randomIndex];
-  //   newPassword = newPassword.concat(randomCharacters);
-  // }
-
-
-  return passwordStr;
-}
-
-generatePassword()
-
 // Write password to the #password input
 function writePassword() {
   let password = generatePassword();
@@ -105,9 +23,53 @@ function writePassword() {
   passwordText.value = password;
 }
 
-writePassword()
-
-// Add event listener to generate button
+// added event listener to write password function.
 generateBtn.addEventListener("click", writePassword);
-generateBtn.addEventListener("click", generatePassword);
 
+let passwordLength = prompt('Choose a length for your password between 8 & 128 characters.');
+
+  while (passwordLength > 128 || passwordLength < 8) {
+    alert('Password should be greater than 8 characters and less than 128.')
+    passwordLength = prompt('Choose a length for your password between 8 & 128 characters.');
+  }
+
+  let specialBoolean = confirm('Do you want special characters?');
+  let numberBoolean = confirm('Do you want numbers?');
+  let uppercaseBoolean = confirm('Do you want uppercase?');
+  let lowercaseBoolean = confirm('Do you want lowercase?');
+
+
+
+function generatePassword() {
+  let passwordStr = '';
+  console.log(passwordStr)
+
+  if (specialBoolean) {
+    finalChosenCharacter = finalChosenCharacter.concat(special);
+  }
+
+  if (numberBoolean) {
+    finalChosenCharacter = finalChosenCharacter.concat(number);
+  }
+
+  if (uppercaseBoolean) {
+    finalChosenCharacter = finalChosenCharacter.concat(upperCase);
+  }
+
+  if (lowercaseBoolean) {
+    finalChosenCharacter = finalChosenCharacter.concat(lowerCase)
+  }
+
+  finalChosenCharacter;
+
+  console.log(finalChosenCharacter);
+
+  let newPassword = '';
+
+  for (let i = 0; i < passwordLength; i++) {
+    let randomIndex = Math.floor(Math.random() * finalChosenCharacter.length);
+    let randomCharacters = finalChosenCharacter[randomIndex];
+    newPassword = newPassword.concat(randomCharacters);
+  }
+  return newPassword;
+}
