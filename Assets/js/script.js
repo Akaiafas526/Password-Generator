@@ -26,24 +26,27 @@ function writePassword() {
 // added event listener to write password function.
 generateBtn.addEventListener("click", writePassword);
 
+// prompts user to select password length according to requirements.
 let passwordLength = prompt('Choose a length for your password between 8 & 128 characters.');
 
-  while (passwordLength > 128 || passwordLength < 8) {
-    alert('Password should be greater than 8 characters and less than 128.')
-    passwordLength = prompt('Choose a length for your password between 8 & 128 characters.');
-  }
+// alerts guest if password requirements aren't met.
+while (passwordLength > 128 || passwordLength < 8) {
+  alert('Password should be greater than 8 characters and less than 128.')
+  passwordLength = prompt('Choose a length for your password between 8 & 128 characters.');
+}
 
-  let specialBoolean = confirm('Do you want special characters?');
-  let numberBoolean = confirm('Do you want numbers?');
-  let uppercaseBoolean = confirm('Do you want uppercase?');
-  let lowercaseBoolean = confirm('Do you want lowercase?');
+// allows user to have options of character types.
+let specialBoolean = confirm('Do you want special characters?');
+let numberBoolean = confirm('Do you want numbers?');
+let uppercaseBoolean = confirm('Do you want uppercase?');
+let lowercaseBoolean = confirm('Do you want lowercase?');
 
 
-
+// function that generates password
 function generatePassword() {
   let passwordStr = '';
-  console.log(passwordStr)
 
+  // if statements that concat each array together.
   if (specialBoolean) {
     finalChosenCharacter = finalChosenCharacter.concat(special);
   }
@@ -62,10 +65,9 @@ function generatePassword() {
 
   finalChosenCharacter;
 
-  console.log(finalChosenCharacter);
-
   let newPassword = '';
 
+  // for loop that randomly selects an array object from above choices.
   for (let i = 0; i < passwordLength; i++) {
     let randomIndex = Math.floor(Math.random() * finalChosenCharacter.length);
     let randomCharacters = finalChosenCharacter[randomIndex];
