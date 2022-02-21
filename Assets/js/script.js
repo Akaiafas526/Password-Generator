@@ -1,8 +1,6 @@
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
 
-let passwordText = document.querySelector("#password");
-
 //  GLobal Variables
 
 // Character Values
@@ -24,27 +22,48 @@ while (passwordLength > 128 || passwordLength < 8) {
   passwordLength = prompt('Choose a length for your password between 8 & 128 characters.');
 }
 
-// confirm('Do you want special characters?');
-// confirm('Do you want numbers?');
-// confirm('Do you want uppercase?');
-// confirm('Do you want lowercase?');
-
 let specialBoolean = confirm('Do you want special characters?');
 let numberBoolean = confirm('Do you want numbers?');
 let uppercaseBoolean = confirm('Do you want uppercase?');
 let lowercaseBoolean = confirm('Do you want lowercase?');
 
-
-
 function generatePassword() {
   let passwordStr = '';
   console.log(passwordStr)
 
+  if (specialBoolean) {
+    finalChosenCharacter = finalChosenCharacter.concat(special);
+  }
+
+  if (numberBoolean) {
+    finalChosenCharacter = finalChosenCharacter.concat(number);
+  }
+
+  if (uppercaseBoolean) {
+    finalChosenCharacter = finalChosenCharacter.concat(upperCase);
+  }
+
+  if (lowercaseBoolean) {
+    finalChosenCharacter = finalChosenCharacter.concat(lowerCase)
+  }
+
+  finalChosenCharacter;
+
+  console.log(finalChosenCharacter);
+
+  let newPassword = '';
+
+  for (let i = 0; i < passwordLength; i++) {
+    let randomIndex = Math.floor(Math.random() * finalChosenCharacter.length);
+    let randomCharacters = finalChosenCharacter[randomIndex];
+    newPassword = newPassword.concat(randomCharacters);
+  }
 
 
   return passwordStr;
 }
 
+generatePassword()
 
 // Write password to the #password input
 function writePassword() {
@@ -55,7 +74,9 @@ function writePassword() {
 
 }
 
+writePassword()
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+// generateBtn.addEventListener("click", writePassword);
 generateBtn.addEventListener("click", generatePassword);
 
