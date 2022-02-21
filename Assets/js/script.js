@@ -27,37 +27,69 @@ let numberBoolean = confirm('Do you want numbers?');
 let uppercaseBoolean = confirm('Do you want uppercase?');
 let lowercaseBoolean = confirm('Do you want lowercase?');
 
+if (specialBoolean) {
+  finalChosenCharacter = finalChosenCharacter.concat(special);
+}
+
+if (numberBoolean) {
+  finalChosenCharacter = finalChosenCharacter.concat(number);
+}
+
+if (uppercaseBoolean) {
+  finalChosenCharacter = finalChosenCharacter.concat(upperCase);
+}
+
+if (lowercaseBoolean) {
+  finalChosenCharacter = finalChosenCharacter.concat(lowerCase)
+}
+
+finalChosenCharacter;
+
+console.log(finalChosenCharacter);
+
+let newPassword = '';
+
+for (let i = 0; i < passwordLength; i++) {
+  let randomIndex = Math.floor(Math.random() * finalChosenCharacter.length);
+  let randomCharacters = finalChosenCharacter[randomIndex];
+  newPassword = newPassword.concat(randomCharacters);
+
+  
+}
+
+
+
 function generatePassword() {
   let passwordStr = '';
   console.log(passwordStr)
 
-  if (specialBoolean) {
-    finalChosenCharacter = finalChosenCharacter.concat(special);
-  }
+  // if (specialBoolean) {
+  //   finalChosenCharacter = finalChosenCharacter.concat(special);
+  // }
 
-  if (numberBoolean) {
-    finalChosenCharacter = finalChosenCharacter.concat(number);
-  }
+  // if (numberBoolean) {
+  //   finalChosenCharacter = finalChosenCharacter.concat(number);
+  // }
 
-  if (uppercaseBoolean) {
-    finalChosenCharacter = finalChosenCharacter.concat(upperCase);
-  }
+  // if (uppercaseBoolean) {
+  //   finalChosenCharacter = finalChosenCharacter.concat(upperCase);
+  // }
 
-  if (lowercaseBoolean) {
-    finalChosenCharacter = finalChosenCharacter.concat(lowerCase)
-  }
+  // if (lowercaseBoolean) {
+  //   finalChosenCharacter = finalChosenCharacter.concat(lowerCase)
+  // }
 
-  finalChosenCharacter;
+  // finalChosenCharacter;
 
-  console.log(finalChosenCharacter);
+  // console.log(finalChosenCharacter);
 
-  let newPassword = '';
+  // let newPassword = '';
 
-  for (let i = 0; i < passwordLength; i++) {
-    let randomIndex = Math.floor(Math.random() * finalChosenCharacter.length);
-    let randomCharacters = finalChosenCharacter[randomIndex];
-    newPassword = newPassword.concat(randomCharacters);
-  }
+  // for (let i = 0; i < passwordLength; i++) {
+  //   let randomIndex = Math.floor(Math.random() * finalChosenCharacter.length);
+  //   let randomCharacters = finalChosenCharacter[randomIndex];
+  //   newPassword = newPassword.concat(randomCharacters);
+  // }
 
 
   return passwordStr;
@@ -71,12 +103,11 @@ function writePassword() {
   let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 writePassword()
 
 // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
 generateBtn.addEventListener("click", generatePassword);
 
